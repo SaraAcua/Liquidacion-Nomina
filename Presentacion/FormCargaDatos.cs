@@ -45,7 +45,7 @@ namespace Presentacion
                 string file = openFile.FileName;
                 txtRuta.Text = openFile.FileName;
                 var respuesta = service.ConsultaTodos(file);
-                if (service.ValidarCarga(respuesta.Liquidacions,cmboVigencia.Text,cmboPerido.Text, cmboSede.Text ))
+                if (service.ValidarCarga(respuesta.Liquidacions,cmboVigencia.Text,cmboPerido.Text, cmboSede.Text ) )
                 {
                     string mensaje = service.GuardarCargaLiquidacion(respuesta.Liquidacions,valor ); // Crear la clase ProductoSedeService y el método guardar
                    //service.GuardarCargaLiquidacion(respuesta.Liquidacions);

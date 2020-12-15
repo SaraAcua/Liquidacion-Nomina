@@ -30,9 +30,16 @@ namespace Presentacion
         private void btnConsulta_Click(object sender, EventArgs e)
         {
             ConsultaCargaRespuesta respuesta = new ConsultaCargaRespuesta();
-
-            respuesta= liquidacion.Buscar(cmbo1.Text,cmbo2.Text,cmbo3.Text);
-            dtgvConsulta.DataSource = respuesta.Liquidacions;
+            if (!respuesta.Error)
+            {
+                respuesta = liquidacion.Buscar(cmbo1.Text, cmbo2.Text, cmbo3.Text);
+                dtgvConsulta.DataSource = respuesta.Liquidacions;
+            }
+            else
+            {
+                MessageBox.Show("No hay datos");
+            }
+           
         }
     }
 }

@@ -70,7 +70,7 @@ namespace DALL
             SqlDataReader dataReader;
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "select* from Liquidacion where idSede LIKE '%" + vigencia + "%' and periodo LIKE '%" + perido + "%'  and vigencia LIKE '%" + sede + "%' ";
+                command.CommandText = "select* from Liquidacion ";
                
                 dataReader = command.ExecuteReader();
                 dataReader.Read();
@@ -78,7 +78,7 @@ namespace DALL
                 {
                     while (dataReader.Read())
                     {
-                       Liquidacion liquidacion = DataReaderMap(dataReader);
+                       Liquidacion liquidacion = DataReaderMapToLiquidacion(dataReader);
                         liquidacions.Add(liquidacion);
                     }
                 }
@@ -86,7 +86,19 @@ namespace DALL
             return liquidacions;
         }
 
-    
+        private Liquidacion DataReaderMapToLiquidacion(SqlDataReader dataReader)
+        {
+            if (!dataReader.HasRows) return null;
+            Liquidacion liquidacion = new Liquidacion();
+            liquidacion.IdSede = dataReader.GetString(0);
+            liquidacion.IdEmpleado = dataReader.GetString(1);
+            liquidacion.NombreEmpleado = dataReader.GetString(2);
+            liquidacion.horastrabajadas = dataReader.GetInt32(3);
+            liquidacion.periodo= dataReader.GetString(4);
+            liquidacion.Vigencia = dataReader.GetString(5);
+            liquidacion.Valor = dataReader.GetInt32(6);
+            return liquidacion;
+        }
 
         private Liquidacion DataReaderMap(SqlDataReader dataReader)
         {
