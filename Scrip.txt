@@ -1,8 +1,10 @@
 create table ValorHoraVigencia( Id varchar (5) primary key, vigencia varchar(15), ValorHora int);
-create table Liquidacion(idSede varchar(5), idempleado varchar(11), nombre varchar(20),HorasTrabajadas int ,periodo varchar (2),vigencia varchar (5), valor int);
+create table Liquidacion(idSede varchar(5) , idempleado varchar(11) primary key, nombre varchar(20),HorasTrabajadas int ,periodo varchar (2),vigencia varchar (5), valor int);
 insert into  ValorHoraVigencia (Id, vigencia, valorHora) values('01','2020', 5000);
 select * from ValorHoraVigencia;
 create table sede (idSede varchar(5) primary key, nombre varchar (20));
 insert into sede (idSede, nombre)values('01','Bogota');
-
+drop table Liquidacion;
 select* from Liquidacion;
+
+delete Liquidacion;
