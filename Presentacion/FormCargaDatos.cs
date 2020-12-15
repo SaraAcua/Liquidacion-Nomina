@@ -40,7 +40,11 @@ namespace Presentacion
             int valor = service.ConsultarValor();
 
             OpenFileDialog openFile = new OpenFileDialog();
-            if (openFile.ShowDialog() == DialogResult.OK && openFile.FileName != null)
+            if(cmboVigencia.Text.Equals("") || cmboPerido.Text.Equals("") || cmboSede.Text.Equals("") )
+            {
+                MessageBox.Show("datos vacios ...", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (openFile.ShowDialog() == DialogResult.OK && openFile.FileName != null)
             {
                 string file = openFile.FileName;
                 txtRuta.Text = openFile.FileName;
@@ -51,7 +55,7 @@ namespace Presentacion
                    //service.GuardarCargaLiquidacion(respuesta.Liquidacions);
                     MessageBox.Show(mensaje);
                 }
-                else
+                else 
                 {
                     MessageBox.Show("Formato incorrecta", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
