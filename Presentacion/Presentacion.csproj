@@ -66,6 +66,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigConnection.cs" />
+    <Compile Include="Consultas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas.Designer.cs">
+      <DependentUpon>Consultas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCargaDatos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCargaDatos.Designer.cs">
+      <DependentUpon>FormCargaDatos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormInicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +98,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Consultas.resx">
+      <DependentUpon>Consultas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCargaDatos.resx">
+      <DependentUpon>FormCargaDatos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormInicio.resx">
       <DependentUpon>FormInicio.cs</DependentUpon>
     </EmbeddedResource>

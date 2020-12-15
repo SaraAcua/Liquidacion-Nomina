@@ -33,8 +33,10 @@ namespace Presentacion
             this.panelBarra = new System.Windows.Forms.Panel();
             this.pictureIncio = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btbCargaDatos = new System.Windows.Forms.Button();
             this.btnPrincipal = new System.Windows.Forms.Button();
             this.panelContenedor = new System.Windows.Forms.Panel();
+            this.btnConsulta = new System.Windows.Forms.Button();
             this.panelBarra.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureIncio)).BeginInit();
             this.panel2.SuspendLayout();
@@ -64,12 +66,28 @@ namespace Presentacion
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Thistle;
+            this.panel2.Controls.Add(this.btnConsulta);
+            this.panel2.Controls.Add(this.btbCargaDatos);
             this.panel2.Controls.Add(this.btnPrincipal);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 41);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(170, 392);
             this.panel2.TabIndex = 1;
+            // 
+            // btbCargaDatos
+            // 
+            this.btbCargaDatos.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btbCargaDatos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btbCargaDatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btbCargaDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btbCargaDatos.Location = new System.Drawing.Point(4, 78);
+            this.btbCargaDatos.Name = "btbCargaDatos";
+            this.btbCargaDatos.Size = new System.Drawing.Size(161, 48);
+            this.btbCargaDatos.TabIndex = 1;
+            this.btbCargaDatos.Text = "Carga de datos";
+            this.btbCargaDatos.UseVisualStyleBackColor = true;
+            this.btbCargaDatos.Click += new System.EventHandler(this.btbCargaDatos_Click);
             // 
             // btnPrincipal
             // 
@@ -94,6 +112,20 @@ namespace Presentacion
             this.panelContenedor.Name = "panelContenedor";
             this.panelContenedor.Size = new System.Drawing.Size(581, 392);
             this.panelContenedor.TabIndex = 2;
+            // 
+            // btnConsulta
+            // 
+            this.btnConsulta.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnConsulta.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConsulta.Location = new System.Drawing.Point(3, 139);
+            this.btnConsulta.Name = "btnConsulta";
+            this.btnConsulta.Size = new System.Drawing.Size(161, 48);
+            this.btnConsulta.TabIndex = 2;
+            this.btnConsulta.Text = "Consulta";
+            this.btnConsulta.UseVisualStyleBackColor = true;
+            this.btnConsulta.Click += new System.EventHandler(this.btnConsulta_Click);
             // 
             // FormPrincipal
             // 
@@ -120,6 +152,8 @@ namespace Presentacion
         private System.Windows.Forms.Panel panelContenedor;
         private System.Windows.Forms.Button btnPrincipal;
         private System.Windows.Forms.PictureBox pictureIncio;
+        private System.Windows.Forms.Button btbCargaDatos;
+        private System.Windows.Forms.Button btnConsulta;
     }
 }
 

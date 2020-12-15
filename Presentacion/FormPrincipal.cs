@@ -44,5 +44,17 @@ namespace Presentacion
             FormInicio form = new FormInicio();
             AbrirFormEnPanel(form);
         }
+
+        private void btbCargaDatos_Click(object sender, EventArgs e)
+        {
+            FormCargaDatos form = new FormCargaDatos();
+            AbrirFormEnPanel(form);
+        }
+
+        private void btnConsulta_Click(object sender, EventArgs e)
+        {
+            Consultas consultas = new Consultas();
+            AbrirFormEnPanel(consultas);
+        }
     }
 }
