@@ -17,12 +17,23 @@ namespace Presentacion
         public FormCargaDatos()
         {
             InitializeComponent();
-            var connectionString = ConfigConnection.connectionString;
-            service = new CargaDatosLiquidacionService(connectionString);
+            LlenarCombo();
+           
+            service = new CargaDatosLiquidacionService(ConfigConnection.connectionString);
         }
 
+        void LlenarCombo()
+        {
+
+            cmboVigencia.Items.Add(2020);
+            cmboPerido.Items.Add(11);
+            cmboSede.Items.Add(02);
+            cmboSede.Items.Add(01);
+
+        }
         private void btnCargar_Click(object sender, EventArgs e)
         {
+            int valor = service.ConsultarValor();
 
             OpenFileDialog openFile = new OpenFileDialog();
             if (openFile.ShowDialog() == DialogResult.OK && openFile.FileName != null)
@@ -32,13 +43,13 @@ namespace Presentacion
                 var respuesta = service.ConsultaTodos(file);
                 if (service.ValidarCarga(respuesta.Liquidacions,cmboVigencia.Text,cmboPerido.Text, cmboSede.Text ))
                 {
-                    string mensaje = service.GuardarCargaLiquidacion(respuesta.Liquidacions, ); // Crear la clase ProductoSedeService y el método guardar
-                   // service.GuardarCargaLiquidacion(respuesta.Liquidacions);
+                    string mensaje = service.GuardarCargaLiquidacion(respuesta.Liquidacions,valor ); // Crear la clase ProductoSedeService y el método guardar
+                   //service.GuardarCargaLiquidacion(respuesta.Liquidacions);
                     MessageBox.Show(mensaje);
                 }
                 else
                 {
-                    MessageBox.Show("Formate incorrecta", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Formato incorrecta", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }

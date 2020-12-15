@@ -13,7 +13,7 @@ namespace BLL
     {
         private readonly ConnectionManager conexion;
         private readonly CargaLiquidacionRepository repositorio;
-        Liquidacion liquidacion;
+        Liquidacion liquidacion = new Liquidacion();
 
         CargaLiquidacionRepository carga = new CargaLiquidacionRepository();
 
@@ -37,7 +37,7 @@ namespace BLL
                         conexion.Close();
 
                     }
-                    catch { }
+                    catch(Exception e){ }
 
 
                     finally
@@ -58,16 +58,16 @@ namespace BLL
         }
         public Boolean ValidarCarga(List<Liquidacion> liquidacions, string vigencia, string perido, string idSede)
         {
-            Boolean flag = false;
+            Boolean flag = true;
             try
             {
 
                 foreach (Liquidacion detalle in liquidacions )
                 {
 
-                    if (liquidacion.IdSede.Equals(idSede) && liquidacion.Equals(vigencia)&&liquidacion.periodo.Equals(perido))
+                    if (!detalle.IdSede.Equals(idSede) || !detalle.Vigencia.Equals(vigencia) ||!detalle.periodo.Equals(perido))
                     {
-                        flag = true;
+                        flag = false;
                     }
 
                 }
@@ -75,13 +75,28 @@ namespace BLL
             }
 
             catch { }
-            return true;
+            return false;
         }
 
+        public int ConsultarValor()
+        {
+            int mensaje = 0;
+            try
+            {
+            
+                conexion.Open();
+                mensaje = repositorio.BuscarPorValor();
+                conexion.Close();
+                    }
+            catch
+            {
 
+            }
+            finally { conexion.Close(); }
+            return mensaje;
+        }
 
-
-
+       
 
         public ConsultaCargaRespuesta ConsultaTodos(string file)
         {

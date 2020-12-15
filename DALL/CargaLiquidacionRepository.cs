@@ -27,8 +27,7 @@ namespace DALL
         {
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Insert Into liquidacion (IdSede, idempleado,Nombre,HorasTrabajadas,periodo," +
-                    "vigencia, valor) " +
+                command.CommandText = "Insert Into Liquidacion (IdSede, idempleado,nombre,HorasTrabajadas,periodo,vigencia, valor) " +
                     "Values (@Id, @idempleado,@nombre,@horas,@periodo,@vigencia,@valor)";
                 //command.Parameters.Add("@Id", SqlDbType.VarChar).Value = persona.Identificacion;
                 command.Parameters.AddWithValue("@Id", liquidacion.IdSede);
@@ -43,24 +42,37 @@ namespace DALL
                 return filas;
             }
         }
-        public List<ValorHoraVigencia> ConsultarTodos()
+        public int BuscarPorValor()
         {
             SqlDataReader dataReader;
-            List<ValorHoraVigencia> valorHoras = new List<ValorHoraVigencia>();
+            int mensaje = 0;
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "Select ValorHora from ValorHoraVigencia where id=@id ";
+                command.CommandText = "select ValorHora from ValorHoraVigencia where id=@id";
+                command.Parameters.AddWithValue("@id", "01");
                 dataReader = command.ExecuteReader();
                 if (dataReader.HasRows)
                 {
                     while (dataReader.Read())
                     {
-                        ValorHoraVigencia valor= DataReaderMapTo(dataReader);
-                        valorHoras.Add(valor);
+                        mensaje = dataReader.GetInt32(0);
                     }
                 }
+                
             }
-            return valorHoras;
+            return mensaje;
+        }
+        public Liquidacion BuscarPorVigencia(string vigencia)
+        {
+            SqlDataReader dataReader;
+            using (var command = _connection.CreateCommand())
+            {
+                command.CommandText = "select * from estudiante where Identificacion=@Identificacion";
+                command.Parameters.AddWithValue("@Identificacion", identificacion);
+                dataReader = command.ExecuteReader();
+                dataReader.Read();
+                return DataReaderMapToEstudiante(dataReader);
+            }
         }
 
         public List<Liquidacion> ConsultarTodos(string fileName)
@@ -83,11 +95,12 @@ namespace DALL
             Liquidacion liquidacion = new Liquidacion();
             char delimeter = ';';
             string[] vectorLiquidacion = linea.Split(delimeter);
-            liquidacion.IdSede = (vectorLiquidacion[0]);
-            liquidacion.IdEmpleado = (vectorLiquidacion[1]);
+            liquidacion.IdSede = vectorLiquidacion[0];
+            liquidacion.IdEmpleado = vectorLiquidacion[1];
             liquidacion.NombreEmpleado = vectorLiquidacion[2];
-            liquidacion.periodo = vectorLiquidacion[3];
-            liquidacion.Vigencia = vectorLiquidacion[4];
+            liquidacion.horastrabajadas = int.Parse(vectorLiquidacion[3]);
+            liquidacion.periodo = vectorLiquidacion[4];
+            liquidacion.Vigencia = vectorLiquidacion[5];
             return liquidacion;
         }
 
