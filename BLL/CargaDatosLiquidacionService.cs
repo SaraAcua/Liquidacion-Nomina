@@ -96,8 +96,28 @@ namespace BLL
             return mensaje;
         }
 
-       
+        public ConsultaCargaRespuesta Buscar(string vigencia, string perido, string sede)
+        {
+            ConsultaCargaRespuesta respuesta = new ConsultaCargaRespuesta();
+            try
+            {
 
+                conexion.Open();
+                respuesta.Liquidacions = repositorio.Buscar(vigencia, perido,sede);
+                conexion.Close();
+                respuesta.Mensaje = (respuesta.Liquidacions != null) ? "Se encontró la Persona buscada" : "La persona buscada no existe";
+                respuesta.Error = false;
+                return respuesta;
+            }
+            catch (Exception e)
+            {
+
+                respuesta.Mensaje = $"Error de la Aplicacion: {e.Message}";
+                respuesta.Error = true;
+                return respuesta;
+            }
+            finally { conexion.Close(); }
+        }
         public ConsultaCargaRespuesta ConsultaTodos(string file)
         {
             ConsultaCargaRespuesta respuesta = new ConsultaCargaRespuesta();

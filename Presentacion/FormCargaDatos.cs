@@ -18,7 +18,11 @@ namespace Presentacion
         {
             InitializeComponent();
             LlenarCombo();
-           
+            cmboVigencia.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmboPerido.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmboSede.DropDownStyle = ComboBoxStyle.DropDownList;
+        
+
             service = new CargaDatosLiquidacionService(ConfigConnection.connectionString);
         }
 
@@ -27,8 +31,8 @@ namespace Presentacion
 
             cmboVigencia.Items.Add(2020);
             cmboPerido.Items.Add(11);
-            cmboSede.Items.Add(02);
-            cmboSede.Items.Add(01);
+            cmboSede.Items.Add("02");
+            cmboSede.Items.Add("01");
 
         }
         private void btnCargar_Click(object sender, EventArgs e)

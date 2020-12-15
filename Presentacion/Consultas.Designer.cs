@@ -30,9 +30,9 @@ namespace Presentacion
         private void InitializeComponent()
         {
             this.dtgvConsulta = new System.Windows.Forms.DataGridView();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbo3 = new System.Windows.Forms.ComboBox();
+            this.cmbo2 = new System.Windows.Forms.ComboBox();
+            this.cmbo1 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Vigencia = new System.Windows.Forms.Label();
@@ -48,30 +48,30 @@ namespace Presentacion
             this.dtgvConsulta.Size = new System.Drawing.Size(508, 174);
             this.dtgvConsulta.TabIndex = 0;
             // 
-            // comboBox3
+            // cmbo3
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(118, 99);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(169, 21);
-            this.comboBox3.TabIndex = 11;
+            this.cmbo3.FormattingEnabled = true;
+            this.cmbo3.Location = new System.Drawing.Point(118, 99);
+            this.cmbo3.Name = "cmbo3";
+            this.cmbo3.Size = new System.Drawing.Size(169, 21);
+            this.cmbo3.TabIndex = 11;
             // 
-            // comboBox2
+            // cmbo2
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(118, 59);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(169, 21);
-            this.comboBox2.TabIndex = 10;
+            this.cmbo2.FormattingEnabled = true;
+            this.cmbo2.Location = new System.Drawing.Point(118, 59);
+            this.cmbo2.Name = "cmbo2";
+            this.cmbo2.Size = new System.Drawing.Size(169, 21);
+            this.cmbo2.TabIndex = 10;
             // 
-            // comboBox1
+            // cmbo1
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(118, 26);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(169, 28);
-            this.comboBox1.TabIndex = 9;
+            this.cmbo1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbo1.FormattingEnabled = true;
+            this.cmbo1.Location = new System.Drawing.Point(118, 26);
+            this.cmbo1.Name = "cmbo1";
+            this.cmbo1.Size = new System.Drawing.Size(169, 28);
+            this.cmbo1.TabIndex = 9;
             // 
             // label3
             // 
@@ -120,9 +120,9 @@ namespace Presentacion
             this.BackColor = System.Drawing.Color.MistyRose;
             this.ClientSize = new System.Drawing.Size(581, 392);
             this.Controls.Add(this.btnConsulta);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbo3);
+            this.Controls.Add(this.cmbo2);
+            this.Controls.Add(this.cmbo1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Vigencia);
@@ -139,9 +139,9 @@ namespace Presentacion
         #endregion
 
         private System.Windows.Forms.DataGridView dtgvConsulta;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbo3;
+        private System.Windows.Forms.ComboBox cmbo2;
+        private System.Windows.Forms.ComboBox cmbo1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label Vigencia;

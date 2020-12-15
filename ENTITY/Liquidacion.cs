@@ -14,7 +14,7 @@ namespace ENTITY
         public int horastrabajadas { get; set; }
         public string periodo { get; set; }
         public string Vigencia { get; set; }
-        //public int Valor { get; set; }
+       public int Valor { get; set; }
         public Liquidacion()
         {
 

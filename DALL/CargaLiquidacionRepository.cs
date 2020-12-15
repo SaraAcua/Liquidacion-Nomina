@@ -62,17 +62,46 @@ namespace DALL
             }
             return mensaje;
         }
-        public Liquidacion BuscarPorVigencia(string vigencia)
+
+
+        public List <Liquidacion> Buscar(string vigencia, string perido, string sede)
         {
+            List<Liquidacion> liquidacions = new List<Liquidacion>();
             SqlDataReader dataReader;
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "select * from estudiante where Identificacion=@Identificacion";
-                command.Parameters.AddWithValue("@Identificacion", identificacion);
+                command.CommandText = "select* from Liquidacion where idSede LIKE '%" + vigencia + "%' and periodo LIKE '%" + perido + "%'  and vigencia LIKE '%" + sede + "%' ";
+               
                 dataReader = command.ExecuteReader();
                 dataReader.Read();
-                return DataReaderMapToEstudiante(dataReader);
+                if (dataReader.HasRows)
+                {
+                    while (dataReader.Read())
+                    {
+                       Liquidacion liquidacion = DataReaderMap(dataReader);
+                        liquidacions.Add(liquidacion);
+                    }
+                }
             }
+            return liquidacions;
+        }
+
+    
+
+        private Liquidacion DataReaderMap(SqlDataReader dataReader)
+        {
+            if (!dataReader.HasRows) return null;
+            Liquidacion liquidacion = new Liquidacion();
+            liquidacion.IdSede = (string)dataReader["Idsede"];
+            liquidacion.IdEmpleado = (string)dataReader["Idempleado"];
+            liquidacion.NombreEmpleado = (string)dataReader["NombreEmpleado"];
+            liquidacion.horastrabajadas = (int)dataReader["HorasTrabajadas"];
+            liquidacion.periodo = (string)dataReader["perido"];
+            liquidacion.Vigencia = (string)dataReader["vigencia"];
+            liquidacion.Valor = (int)dataReader["valor"];
+
+
+            return liquidacion;
         }
 
         public List<Liquidacion> ConsultarTodos(string fileName)
