@@ -70,8 +70,9 @@ namespace DALL
             SqlDataReader dataReader;
             using (var command = _connection.CreateCommand())
             {
-                command.CommandText = "select* from Liquidacion ";
-               
+                command.CommandText = "select* from Liquidacion where vigencia=@vigencia ";
+                command.Parameters.AddWithValue("@vigencia", vigencia);
+                command.Parameters.AddWithValue("@sede", sede);
                 dataReader = command.ExecuteReader();
                 dataReader.Read();
                 if (dataReader.HasRows)

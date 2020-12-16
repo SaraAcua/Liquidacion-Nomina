@@ -22,22 +22,29 @@ namespace Presentacion
             cmbo2.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbo3.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbo1.Items.Add(2020);
+            cmbo1.Items.Add(2021);
             cmbo2.Items.Add(11);
             cmbo3.Items.Add("02");
-          
+            cmbo3.Items.Add("01");
+
         }
 
         private void btnConsulta_Click(object sender, EventArgs e)
         {
             ConsultaCargaRespuesta respuesta = new ConsultaCargaRespuesta();
-            if (!respuesta.Error)
+            if (respuesta.Error)
             {
-                respuesta = liquidacion.Buscar(cmbo1.Text, cmbo2.Text, cmbo3.Text);
-                dtgvConsulta.DataSource = respuesta.Liquidacions;
+                MessageBox.Show("No hay datos");
+            }
+            else if (cmbo1.Text.Equals(""))
+            {
+                MessageBox.Show("combo vacio");
             }
             else
             {
-                MessageBox.Show("No hay datos");
+                respuesta = liquidacion.Buscar(cmbo1.Text, cmbo2.Text, cmbo3.Text);
+                dtgvConsulta.DataSource = respuesta.Liquidacions;
+               
             }
            
         }
